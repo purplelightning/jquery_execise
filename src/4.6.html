@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+        #rat{
+            display:none;
+        }
+
+    </style>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {//内置函数,等待HTML加载之后再运行脚本
+            var count = 0;
+            $('#btn').click(function () {
+                if (count % 2 == 0) {
+                    $('#cat').css({
+                        width: '150px',
+                        height: '150px',
+                        border: '3px dashed red',
+                        'border-radius': '50%'
+                    });
+                    $('#rat').fadeIn(1000);
+                } else {
+                    $('#cat').css({
+                        width: '200px',
+                        height: '200px',
+                        border: 'none',
+                        'border-radius': '0'
+                    });
+                    $('#rat').fadeOut(800);
+                }
+                count++;
+            })
+        })
+    </script>
+</head>
+<body>
+<img id="cat" src="img/cat.jpeg">
+<img id="rat" src="img/rat.jpg"><br>
+<button id="btn">改变大小</button>
+
+
+</body>
+</html>
