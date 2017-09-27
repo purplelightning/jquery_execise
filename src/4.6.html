@@ -6,21 +6,50 @@
     <style>
         body {
             text-align: center;
+            /*background: rgba(199, 188, 22, 0.4);*/
         }
 
-        img {
+        #cat, rat {
             width: 200px;
             height: 200px;
         }
-        #rat{
-            display:none;
+
+        button {
+            padding: 5px;
+            margin: 10px;
+            border: 2px solid green;
+            cursor: hand;
+            border-radius: 8px;
+            box-shadow: 5px 3px 5px #00aa00;
         }
 
+        #rat {
+            display: none;
+        }
+
+        #name {
+            /*visibility: hidden;*/
+        }
+
+        .wideborder {
+            box-shadow: 10px 10px 5px #a65aff;
+        }
+
+        .paper {
+            width: 200px;
+            height: 300px;
+        }
+
+        #wallpaper img {
+            margin: 5px;
+        }
     </style>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         $(document).ready(function () {//内置函数,等待HTML加载之后再运行脚本
-            var count = 0;
+            var count = 0,
+                dcount = 0;
+
             $('#btn').click(function () {
                 if (count % 2 == 0) {
                     $('#cat').css({
@@ -40,15 +69,101 @@
                     $('#rat').fadeOut(800);
                 }
                 count++;
-            })
+            });
+            $('#btn2').click(function () {
+                if (dcount % 2 == 0) {
+                    $('#input').css('visibility', 'hidden');
+                } else {
+                    $('#input').css('visibility', 'visible');
+                }
+                dcount++;
+            });
+            $('#btn3').click(function () {
+                $('#input').append("<p>This is a node created by the function append().</p>")
+                    .prepend("<p>Created by prepend()</p>");
+            });
+            $('#btn4').click(function () {
+                alert("html:" + $('#input').html()
+                    + "text:" + $('#input').text());
+            });
+            $('#btn5').click(function () {
+                $('#input p:last').remove();
+            });
+            $('#btn6').click(function () {
+                $('#cat').replaceWith('<img src="img/name-unown.jpg">');
+            });
+            $('#btn7').click(function () {
+                $('#wallpaper img').addClass('wideborder');
+            });
+            $('#btn8').click(function () {
+                $('#wallpaper img').toggleClass('wideborder');
+            });
+
+
         })
     </script>
 </head>
 <body>
 <img id="cat" src="img/cat.jpeg">
 <img id="rat" src="img/rat.jpg"><br>
-<button id="btn">改变大小</button>
+<button id="btn">变化</button>
+<button id="btn2">显示隐藏</button>
+<button id="btn3">添加元素</button>
+<button id="btn4">弹出</button>
+<button id="btn5">删除</button>
+<button id="btn6">替换</button>
+<br>
+
+<div id="input">
+    <label for="name">Name:</label>
+    <input id="name" type="text" placeholder="输入姓名">
+</div>
+
+<div id="manybtn" style="display: block;margin: 20px">
+    <button id="btn7">添加类</button>
+    <button id="btn8">添加或删除类</button>
+    <button id="btn9">变换背景颜色</button>
+    <button id="btn10">改变属性</button>
+    <button id="btn11">去除属性</button>
+    <button id="btn12">fade</button>
+</div>
+<div id="wallpaper">
+    <img class="paper" src="img/bg2.jpg">
+    <img class="paper" src="img/bg3.jpg">
+    <img class="paper" src="img/wall2.jpg">
+    <img class="paper" src="img/wall3.jpg">
+</div>
+
+<script>
+    var Arraycolor = new Array("#00FF66", "#FFFF99", "#99CCFF", "#FFCCFF", "#FFCC99", "#00FFFF", "#FFFF00", "#FFCC00", "#FF00FF");
+    var n = 0;
+
+    function turncolors() {
+        n++;
+        if (n == (Arraycolor.length - 1)) n = 0;
+        document.bgColor = Arraycolor[n];
+        setTimeout("turncolors()", 1000);
+    }
+
+    $('#btn9').click(function () {
+        turncolors();
+    });
+    $('#btn10').click(function () {
+        $('#wallpaper img:last').attr('src', 'img/sea.jpg')
+    });
+    $('#btn11').click(function () {
+        $('body').removeAttr('bgColor')
+    });
+    var an = 0;
+    $('#btn12').click(function () {
+        if (an % 2 == 0)
+            $('img').fadeOut(1000);
+        else
+            $('img').fadeIn(500);
+        an++;
+    });
 
 
+</script>
 </body>
 </html>
