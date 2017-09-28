@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画和效果</title>
+    <style>
+        body {
+            text-align: center;
+
+        }
+
+        .bg {
+            background: url('img/sea5.jpg');
+            height: 1000px;
+            text-align: center;
+            line-height: 600px;
+        }
+
+        /*用于模糊*/
+        .bg-blur {
+            float: left;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+
+        .content-front {
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            /*height: 600px;*/
+            /*line-height: 600px;*/
+            text-align: center;
+        }
+
+        button {
+            width: 90px;
+            background-color: #5d58d9;
+            color: #ff4f4a;
+            padding: 8px;
+            border: 3px solid black;
+            border-radius: 0 10px 10px 0;
+        }
+
+        img {
+            position: relative;
+            width: 260px;
+            height: 180px;
+            margin: 2px 10px;
+            border: 4px solid silver;
+        }
+        #shen,#e{
+            display: none;
+        }
+    </style>
+
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                $('#pu').fadeOut('slow');
+            });
+            $('#btn2').click(function () {
+                $('#pu').fadeIn(2000);
+            });
+            $('#btn3').click(function () {
+                $('#pu').fadeToggle(1000);
+            });
+            $('#btn4').click(function () {
+                $('#pu').slideToggle(1000);
+            });
+            $('#btn5').click(function () {
+                $('#cat').animate({
+                    'margin-left': '+=150px',
+                    'margin-top':'+=50px'
+                }, 1000);
+            });
+            $('#btn6').click(function () {
+                $('#cat').animate({
+                    'margin-left': '-=150px',
+                    'margin-top':'-=50px'
+                }, 500);
+            });
+            var n=1;
+            $('#btn7').click(function () {
+                if(n>=0){
+                    n=n-0.2;
+                }
+                $('#rat').fadeTo('normal',n);
+            });
+            $('#btn8').click(function () {
+                $('#shen').fadeIn(1000,function () {
+                    $('#e').slideDown(1000);
+                })
+            });
+            $('#btn9').click(function () {
+                $('#shen,#e').hide();
+            });
+            $('#btn10').click(function () {
+                $('#shen,#e').fadeIn(1000).delay(4000).fadeOut(250);
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div>
+    <div class="bg bg-blur"></div>
+    <div class="content-front">
+        <div style="display: block;margin-top: 30px;margin-bottom: 30px;">
+            <button id="btn">fadeOut</button>
+            <button id="btn2">fadeIn</button>
+            <button id="btn3">fadeToggle</button>
+            <button id="btn4">slideToggle</button>
+            <button id="btn5">右移</button>
+            <button id="btn6">左移</button>
+            <button id="btn7">fadeTo</button>
+        </div>
+
+        <img id="pu" src="img/pu.jpg"><br>
+        <img id="cat" src="img/cat.jpeg">
+        <img id="rat" src="img/rat.jpg">
+
+        <div style="display: block;margin-top: 30px;margin-bottom: 30px;">
+            <button id="btn8">连续</button>
+            <button id="btn9">消失</button>
+            <button id="btn10">排队</button>
+        </div>
+        <img id="shen" src="img/shen.jpg">
+        <img id="e" src="img/e.jpg">
+    </div>
+</div>
+
+
+</body>
+</html>

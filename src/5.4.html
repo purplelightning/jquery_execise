@@ -24,14 +24,26 @@
                     $('#output').val("You left the territory of LichKing")
                 }
             );
-            $(document).click(function (evt) {
-                var
-            })
+            $('#btn').click(function () {
+                $('#LichKing').unbind('hover');
+            });
+            function showMessage(evt) {
+                alert(evt.data.message);
+            };
+
+            var linkVar={message:'Message mountain'};
+            var pVar={message:'Message sea'};
+            $('#btn2').bind('click',linkVar,showMessage);
+            $('#btn3').bind('mouseover',pVar,showMessage);
+
         });
     </script>
 </head>
 <body>
 <img id="LichKing" src="img/wang.jpg">
 <input type="text" id="output" size="40">
+<button id="btn">取消图片事件绑定</button>
+<button id="btn2">msg1</button>
+<button id="btn3">msg2</button>
 </body>
 </html>

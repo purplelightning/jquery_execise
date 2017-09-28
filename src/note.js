@@ -134,6 +134,15 @@ var showMessage = function (e) {
 
 $('#btn1').bind('click keypress', linkVar, showMessage);//绑定多个事件
 
+$('#btn').bind({
+    'click': function () {
+
+    },
+    'mouseover': function () {
+
+    }
+});
+
 //效果函数的速度
 //fast,normal,slow
 $('element').fadeOut('slow');
@@ -295,19 +304,29 @@ $.get(url, data, callback);
 $.post(url, data, callback);
 
 $get('rateMovie.php', 'rating=5');
-$post('rateMovie.php', 'rating=5');     $post('rateMovie.php',{rating:5});
+$post('rateMovie.php', 'rating=5');
+$post('rateMovie.php', {rating: 5});
 $post('rateMovie.php', 'rating=5&user=Bob');
 //空格:%20  &:%26      =: %3D
 
 //转义字符串
 var queryString = 'favFood=' + encodeURIComponent('Mac & Cheese');
-$post('rateMovie.php',queryString);
+$post('rateMovie.php', queryString);
 
 
 //把表单数据转换成get()和post()函数可以使用的数据
-var formData=$('#login').serialize();
-$.get('login.php',formData,loginResults);
+var formData = $('#login').serialize();
+$.get('login.php', formData, loginResults);
 
+$('#open').click(function () {
+    $('form').slideToggle();
+    $(this).toggleClass('close');
+});
+
+//连续动作
+$('#shen').fadeIn(1000, function () {
+    $('#e').slideDown(1000);
+});
 
 
 
