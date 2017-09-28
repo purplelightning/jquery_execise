@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第5章</title>
+    <style>
+        img {
+            margin: 50px;
+            width: 300px;
+            height: 200px;
+        }
+
+        #output {
+            position: relative;
+            top: -200px;
+        }
+    </style>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#LichKing').hover(function () {
+                    $('#output').val("You enter the place of LichKing.")
+                }, function () {
+                    $('#output').val("You left the territory of LichKing")
+                }
+            );
+            $(document).click(function (evt) {
+                var
+            })
+        });
+    </script>
+</head>
+<body>
+<img id="LichKing" src="img/wang.jpg">
+<input type="text" id="output" size="40">
+</body>
+</html>
