@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rollover Images</title>
+    <link href="../css/site.css" rel="stylesheet">
+    <style>
+        #gallery img {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid rgb(0, 0, 0);
+        }
+    </style>
+    <script src="../js/jquery-1.7.2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#gallery img').each(function () {
+                var imgFile = $(this).attr('src');
+                var preloadImage = new Image();
+                var imgExt = /(\.\w{3,4}$)/;
+                preloadImage.src = imgFile.replace(imgExt, '_h$1');
+
+                $(this).hover(
+                    function () {
+                        $(this).attr('src', preloadImage.src);
+                    },
+                    function () {
+                        $(this).attr('src',imgFile);
+                    }
+                )
+            });
+
+        }); // end ready
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+    </div>
+
+
+    <div class="content">
+        <div class="main">
+            <h1>Rollover Images</h1>
+            <p>Mouse over the images below</p>
+            <div id="gallery"><a href="../img/large/blue.jpg"><img src="../img/small/blue.jpg" width="70" height="70"
+                                                                   alt="blue"></a> <a href="../img/large/green.jpg"><img
+                    src="../img/small/green.jpg" width="70" height="70" alt="green"></a> <a
+                    href="../img/large/orange.jpg"><img src="../img/small/orange.jpg" width="70" height="70"
+                                                        alt="orange"></a> <a href="../img/large/purple.jpg"><img
+                    src="../img/small/purple.jpg" width="70" height="70" alt="purple"></a> <a
+                    href="../img/large/red.jpg"><img src="../img/small/red.jpg" width="70" height="70" alt="red"></a> <a
+                    href="../img/large/yellow.jpg"><img src="../img/small/yellow.jpg" width="70" height="70"
+                                                        alt="yellow"></a></div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>JavaScript &amp; jQuery: The Missing Manual, by <a href="http://sawmac.com/">David McFarland</a>. Published
+            by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+    </div>
+</div>
+</body>
+</html>
