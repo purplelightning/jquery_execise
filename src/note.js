@@ -328,10 +328,34 @@ $('#shen').fadeIn(1000, function () {
     $('#e').slideDown(1000);
 });
 
+$(this).parent().siblings().each(function () {
+    alert($(this).text());// 此时this的值变了   this相当于each前面的元素
+
+});
 
 
+$('ul :first').css('background', 'red');
+$('ul').children().first().css('background', 'red');
+
+//滚动公告,用dom,尽量避免
+setInterval(function () {
+    var newLi = $('ul>:first').clone(true);
+    $('ul').append(newLi);
+    $('ul>:first').remove();
+}, 1500);
 
 
+$('#sel').click(function (evt) {
+    evt.stopPropagation();//阻止冒泡,不传递到document
+    $('ul').show();
+});
+$('ul li').click(function () {
+    $('#sel').text($(this).text());
+    $('ul').hide();
+});
+$(document).click(function () {
+    $('ul').hide();
+});
 
 
 
